@@ -1,0 +1,26 @@
+{
+  "name": "strongcodeforge",
+  "version": "1.0.0",
+  "description": "[link]\r (https://github.com/Advanced-Frontend/Daily-Interview-Question/blob/master/datum/summary.md#L153)",
+  "type": "module",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaobinniu/StrongCodeForge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiaobinniu/StrongCodeForge/issues"
+  },
+  "homepage": "https://github.com/xiaobinniu/StrongCodeForge#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.33"
+  }
+}
