@@ -1,25 +1,30 @@
-function getcolor(color, opacity) {
-    var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
-    // 把颜色值变成小写
-    if (reg.test(color)) {
-        // 如果只有三位的值，需变成六位，如：#fff => #ffffff
-        if (color.length === 4) {
-            var colorNew = "#";
-            for (var i = 1; i < 4; i += 1) {
-                colorNew += color.slice(i, i + 1).concat(color.slice(i, i + 1));
-            }
-            color = colorNew;
+
+function test(str) {
+    let reg = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/
+    if (reg.test(str)) {
+        let one = ""
+        let two = ""
+        let three = ""
+        if (str.length === 4) {
+            one = str.slice(1, 2).concat(str.slice(1, 2))
+            two = str.slice(2, 3).concat(str.slice(2, 3))
+            three = str.slice(3).concat(str.slice(3))
+        } else {
+            one = str.slice(1, 3)
+            two = str.slice(3, 5)
+            three = str.slice(5)
         }
-        // 处理六位的颜色值，转为RGB
-        var colorChange = [];
-        for (var i = 1; i < 7; i += 2) {
-            colorChange.push(parseInt("0x" + color.slice(i, i + 2)));
-        }
-        return "rgba(" + colorChange.join(",") + "," + opacity + ")";
+
+        return `rgb(${parseInt(one, 16)},${parseInt(two, 16)},${parseInt(three, 16)})`
+
     } else {
-        return color;
+        return str
     }
+
 }
 
-getcolor('#666', 0.8) //'rgba(102,102,102,0.8)'
-getcolor('#ff0000', 0.5) //'rgba(255,0,0,0.5)'
+test('#666') //'rgba(102,102,102,0.8)'
+test('#ff0000') //'rgba(255,0,0,0.5)'
+
+console.log(test('#666'));
+console.log(test('#ff0000'));

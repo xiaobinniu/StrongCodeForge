@@ -1,2 +1,1 @@
-let a = new RegExp("A" + "}")
-console.log(a);
+console.log("a".concat("b"));
