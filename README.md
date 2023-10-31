@@ -234,4 +234,7 @@ LazyMan('Tony').eat('lunch').eat('dinner').sleepFirst(5).sleep(10).eat('junk foo
 
 ---
 
-第 59 题
+### 29. 模拟实现一个 Promise.finally
+
+---
+
