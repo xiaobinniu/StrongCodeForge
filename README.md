@@ -80,7 +80,7 @@
 
 ---
 
-### * 13. 冒泡排序 
+### * 13. 冒泡排序如何实现，时间复杂度是多少， 还可以如何改进
 
 ---
 
@@ -88,4 +88,150 @@
 
 ---
 
-31
+### 15. 异步循环错误  // 输出了10个10
+   <script>   // var 共用 i 环境
+    for (var i = 0; i < 10; i++) {
+        setTimeout(() => {
+            console.log(i);
+        }, 1000)
+    }
+   </script>
+
+---
+
+### 16. 使用迭代的方式实现 flatten 函数
+
+--- 
+
+### 17. 下面代码中 a 在什么情况下会打印 1？
+
+```js  //  == 比较会 .toString() 进行隐式转化 
+var a = ?;
+if(a == 1 && a == 2 && a == 3){
+ 	console.log(1);
+}
+```
+
+---
+
+### 18：实现一个 sleep 等待函数
+
+---
+
+### 19. [3, 15, 8, 29, 102, 22] Array.sort() 排序
+
+ <!-- 102 15 22 29 3 8 -->
+
+---
+
+### 20. 介绍 HTTPS 握手过程
+
+1. 客户端使用https的url访问web服务器,要求与服务器建立ssl连接
+2. web服务器收到客户端请求后, 然后会将网站的证书(包含公钥)传送一份给客户端
+3. 客户端收到网站证书后会检查证书的颁发机构以及过期时间, 如果没有问题就随机产生一个秘钥
+4. 客户端利用公钥将会话秘钥加密, 并传送给服务端(同时返回客户端握手结束通知), 服务端利用自己的私钥解密出会话秘钥(向客户端发送服务器握手结束通知)
+5. 之后服务器与客户端使用秘钥加密传输
+
+---
+
+### 21. 输出以下代码执行的结果并解释为什么
+
+```js   // 在对象中加入splice属性方法，和length属性后。这个对象变成一个类数组。
+var obj = {
+    '2': 3,
+    '3': 4,
+    'length': 2,
+    'splice': Array.prototype.splice,
+    'push': Array.prototype.push
+}
+obj.push(1)
+obj.push(2)
+console.log(obj)
+```
+
+---
+
+### 22.为什么通常在发送数据埋点请求的时候使用的是 1x1 像素的透明 gif 图片？
+
+1. 避免跨域（img 天然支持跨域）
+2. 利用空白gif或1x1 px的img是互联网广告或网站监测方面常用的手段，简单、安全、相比PNG/JPG体积小，1px 透明图，对网页内容的影响几乎没有影响，这种请求用在很多地方，比如浏览、点击、热点、心跳、ID颁发等等，
+3. 图片请求不占用 Ajax 请求限额
+4. 不会阻塞页面加载，影响用户的体验，只要new Image对象就好了，一般情况下也不需要append到DOM中，通过它的onerror和onload事件来检测发送状态。
+<script type="text/javascript">
+ var thisPage = location.href;
+ var referringPage = (document.referrer) ? document.referrer : "none";  // document.referrer 返回从哪个页面点击进来的,否则是""
+ var beacon = new Image();
+ beacon.src = "http://www.example.com/logger/beacon.gif?page=" + encodeURI(thisPage)
+ + "&ref=" + encodeURI(referringPage);
+</script>
+
+---
+
+### 23. 什么是闭包？闭包的特性？
+1. 闭包就是能够读取其他函数内部变量的函数。
+    闭包（closure）是一个函数以及其捆绑的周边环境状态（lexical environment，词法环境）的引用的组合。换而言之，闭包让开发者可以从内部函数访问外部函数的作用域。在 JavaScript 中，闭包会随着函数的创建而被同时创建。
+2. 闭包的特性
+    1. 函数嵌套函数
+    2. 函数内部可以引用外部的参数和变量
+    3. 参数和变量不会被垃圾回收机制回收
+
+---
+
+### 24. 实现 (5).add(3).minus(2) 功能。   不是 calc(5) 是 Number.prototype
+
+> 例： 5 + 3 - 2，结果为 6
+
+---
+
+### 25.输出以下代码的执行结果并解释为什么
+ 
+```js  // 每个节点的变量最终赋值的值取决去最后一个等号的右边值, 先写出 旧a 新a 比较好看
+var a = {n: 1};
+var b = a;
+a.x = a = {n: 2};
+
+console.log(a.x) 	
+console.log(b.x)
+```
+---
+
+### 26. 某公司 1 到 12 月份的销售额存在一个对象里面
+
+>如下：{1:222, 2:123, 5:888}，请把数据处理为如下结构：[222, 123, null, null, 888, null, null, null, null, null, null, null]。
+
+---
+
+### 27.要求设计 LazyMan 类，实现以下功能。 
+
+```js
+LazyMan('Tony');
+// Hi I am Tony
+
+LazyMan('Tony').sleep(10).eat('lunch');
+// Hi I am Tony
+// 等待了10秒...
+// I am eating lunch
+
+LazyMan('Tony').eat('lunch').sleep(10).eat('dinner');
+// Hi I am Tony
+// I am eating lunch
+// 等待了10秒...
+// I am eating diner
+
+LazyMan('Tony').eat('lunch').eat('dinner').sleepFirst(5).sleep(10).eat('junk food');
+// Hi I am Tony
+// 等待了5秒...
+// I am eating lunch
+// I am eating dinner
+// 等待了10秒...
+// I am eating junk food
+```
+---
+
+### 28. 给定两个数组，写一个方法来计算它们的交集。
+
+> 例如：给定 nums1 = [1, 2, 2, 1]，nums2 = [2, 2]，返回 [2, 2]。
+
+---
+
+第 59 题
