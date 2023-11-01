@@ -1,18 +1,5 @@
-class N {
-    constructor() {
-        this.queue = []
-    }
-
-    add(n) {
-        let fn = () => {
-            console.log(n);
-        }
-        this.queue.push(fn)
-
-        this.queue[0]()
-    }
-
-
+function test() {
+    return [1].keys()
 }
 
-new N().add(5)
+console.log(test());
