@@ -13,7 +13,13 @@ let list = [
                     },
                     {
                         id: 112,
-                        name: '福田区'
+                        name: '福田区',
+                        children: [
+                            {
+                                id: 122,
+                                name: '南山区'
+                            },
+                        ]
                     }
                 ]
             }
@@ -24,8 +30,9 @@ let list = [
     }
 ]
 
-const value = 112
-const fn = (arr, value, result = []) => {
+const value = 122
+const fn = (arr, value,) => {
+    let result = []  // 不一样
     arr.forEach((obj, index) => {
         if (obj.id == value) {
             result.push(obj.id);
@@ -33,7 +40,7 @@ const fn = (arr, value, result = []) => {
         } else {
             if (obj.children?.length > 0) {
                 result.push(obj.id);
-                fn(obj.children, value, result)
+                result.push(...fn(obj.children, value, result)); // 不一样
             } else if (index === obj.length - 1) {
                 result = []
             }
@@ -43,10 +50,23 @@ const fn = (arr, value, result = []) => {
 
     return result
 }
-console.log(fn(list, value)); // 输出 [1， 11， 112]
+const fn2 = (arr, value, result = []) => { // 不一样
+    arr.forEach((obj, index) => {
+        if (obj.id == value) {
+            result.push(obj.id);
+            return result
+        } else {
+            if (obj.children?.length > 0) {
+                result.push(obj.id);
+                fn(obj.children, value, result)  // 不一样
+            } else if (index === obj.length - 1) {
+                result = []
+            }
+        }
+    })
 
-
-// 先找到子节点,再往回找
-const fn2 = () => {
-
+    return result
 }
+console.log(fn(list, value)); // 输出 [1，11，112,122]
+console.log(fn2(list, value));
+console.log(fn3(list, value));
