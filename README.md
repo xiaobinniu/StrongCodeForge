@@ -177,7 +177,7 @@ console.log(obj)
 
 ---
 
-### 24. 实现 (5).add(3).minus(2) 功能。   不是 calc(5) 是 Number.prototype
+### 24. 实现 (5).add(3).minus(2) 功能。   不是 calc(5)新函数,  是 Number.prototype 直接操作数字
 
 > 例： 5 + 3 - 2，结果为 6
 
@@ -327,7 +327,7 @@ compositionstart compositionupdate compositionend
 ### 44. 请实现一个 add 函数，满足以下功能。
 
 > ```js
-> add(1); 			// 1
+> add(1); 		// 1
 > add(1)(2);  	// 3
 > add(1)(2)(3)；// 6
 > add(1)(2, 3); // 6
@@ -336,6 +336,90 @@ compositionstart compositionupdate compositionend
 
 ---
 
+### 46. 周一算法题之「两数之和」
+>给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。
+>你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。
+>示例：
+
+```js
+给定 nums = [2, 7, 11, 15], target = 9
+
+因为 nums[0] + nums[1] = 2 + 7 = 9
+所以返回 [0, 1]
+```
+
+---
+
+### 47. 跳出双重for循环
+
+```js  // 带有标签的for 循环
+outerloop: for (let index = 0; index < 10; index++) {
+    console.log("外", index);
+    for (let j = 0; j < 10; j++) {
+        console.log("里", j);
+        if (j === 5) {
+            break outerloop;
+        }
+    }
+}
+```
+
+--- 
+
+### 48. 判断是不是正确网址
+```js
+   try {
+        new URL(url);
+        return true;
+    } catch (err) {  // err :Invalid URL
+        return false;
+    }
+```
+
+---
+
+### 49. 实现 convert 方法，把原始 list 转换成树形结构，要求尽可能降低时间复杂度
+***
+
+---
+
+### 50. 设计并实现 Promise.race()
+Promise.all([p1, p2])
+Promise.race([p1, p2])
+
+---
+
+### 51. 实现模糊搜索高亮显示
+
+---
+
+### 52. 已知数据格式，实现一个函数 fn 找出链条中所有的父级 id
+ <!-- [
+    {
+        id: 1,
+        name: '广东',
+        children: [
+            {
+                id: 11,
+                name: '深圳',
+                children: [
+                    {
+                        id: 111,
+                        name: '南山区'
+                    },
+                    {
+                        id: 112,
+                        name: '福田区'
+                    }
+                ]
+            }
+        ]
+    }
+] -->
+
+---
+
+### 53.
 
 
 

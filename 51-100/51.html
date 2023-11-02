@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实现模糊搜索高亮显示</title>
+    <style>
+        span {
+            color: blue
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text">
+    <div>这是测试的句子测试</div>
+    <script>
+        let input = document.querySelector("input")
+        let div = document.querySelector("div")
+        input.addEventListener("input", inputfn, this)
+
+        function inputfn(e) {
+            console.log(e.target.value);
+            let str = "这是测试的句子测试";
+            str = str.replace(e.target.value, (p) => {
+                return `<span>${p}</span>`
+            })
+            div.innerHTML = str
+        }
+    </script>
+</body>
+
+</html>

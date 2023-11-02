@@ -1,31 +1,37 @@
-// 请实现一个 add 函数，满足以下功能。
+// 柯里化实现多参数无限累加
+// function add(...nums1) {
+//     function sum(...nums2) {
+//         nums1 = [...nums1, ...nums2]
+//         return sum
+//     }
 
-// > ```js
-// > add(1); 			// 1
-// > add(1)(2);  	// 3
-// > add(1)(2)(3)；// 6
-// > add(1)(2, 3); // 6
-// > add(1, 2)(3); // 6
-// > add(1, 2, 3); // 6
+//     sum.toString = function () {
+//         return nums1.reduce((pre, cur) => pre + cur, 0)
+//     }
+
+//     return sum
+// }
+
+console.log(add(1).toString());         // 1
+console.log(add(1)(2).toString());      // 3
+console.log(add(1)(2)(3).toString());   // 6
+console.log(add(1)(2, 3).toString());   // 6
+console.log(add(1, 2)(3).toString());   // 6
+console.log(add(1, 2, 3).toString());   // 6
 
 function add() {
-    // 收集第一次传入的参数
-    // 同时这个数组还用于存储后续传入的参数
-    let _args = [...arguments];
-    // 收集后续的函数
-    let getArgs = function () {
-        _args.push(...arguments)
-        // 这次收集完了,在返回继续收集
-        return getArgs;
+    let args = [...arguments];
+
+    // 利用sum函数把 所有参数都放在数组里面, 然后返回sum函数,继续调用还是调用的sum函数,继续累加
+    function sum() {
+        args = args.concat(...arguments)
+        return sum
     }
 
-    // 调用console.log打印的时候,会调用右值的toString方法,现在改写一下
-    getArgs.toString = function () {
-        return _args.reduce((toatl, cur) => toatl + cur)
+    // 因为最后返回sum函数,输出也是输出sum的结果
+    sum.toString = function () {
+        return args.reduce((a, b) => a + b, 0)
     }
 
-    // 第一次调用add函数的时候,返回收集参数函数
-    return getArgs;
+    return sum
 }
-
-console.log(add(1));

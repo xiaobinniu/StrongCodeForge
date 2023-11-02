@@ -1,5 +1,5 @@
-function test() {
-    return [1].keys()
-}
+let str = "12345"
 
-console.log(test());
+let str2 = str.replace("1234", "5")
+console.log(str);
+console.log(str2);
