@@ -9,7 +9,7 @@
 
 ### 1. `['1', '2', '3'].map(parseInt)`  输出 [1,NaN,NaN]
  1. map (item,index,arr)
- 2. paeseInt("2",1) 1进制没有2
+ 2. parseInt("2",1) 1进制没有2
 
 ---
 

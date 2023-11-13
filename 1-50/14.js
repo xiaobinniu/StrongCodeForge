@@ -2,9 +2,9 @@
 function test(str) {
     let reg = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/
     if (reg.test(str)) {
-        let one = ""
-        let two = ""
-        let three = ""
+        let one = "",
+            two = "",
+            three = "";
         if (str.length === 4) {
             one = str.slice(1, 2).concat(str.slice(1, 2))
             two = str.slice(2, 3).concat(str.slice(2, 3))
