@@ -27,4 +27,36 @@ let arr1 = [1, 3]
 let arr2 = [2]
 arr1 = [1, 2]
 arr2 = [3, 4]
-console.log(test(arr1, arr2));
+// console.log(test(arr1, arr2));
+
+
+// 时间复杂度 O(log(m+n))  二分法?
+
+function test2(arr1, arr2) {
+    let newarr = []
+    let i = 0,
+        j = 0;
+
+    while (i < arr1.length && j < arr2.length) {
+        if (arr1[i] < arr2[j]) {
+            newarr.push(arr1[i]);
+            i++;
+        } else {
+            newarr.push(arr2[j]);
+            j++;
+        }
+    }
+
+    while (i < arr1.length) {
+        newarr.push(arr1[i]);
+        i++;
+    }
+    while (j < arr2.length) {
+        newarr.push(arr2[j]);
+        j++;
+    }
+
+    console.log(newarr);
+}
+
+// test2(arr1, arr2)

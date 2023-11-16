@@ -90,6 +90,71 @@ function DFSdeepClone(root, visitedArr = []) {
 console.log(DFSdeepClone(data), DFSdeepClone(data) === data);
 
 
-/**
- * 广度优先遍历
- */
+// 考虑Symbol和循环引用
+
+function deepCopy2(obj, cache = new Map()) {
+    // 如果是基本类型直接返回
+    if (obj === null || typeof obj !== 'object') {
+        return obj;
+    }
+
+    // 如果对象已经被拷贝过，直接返回拷贝后的对象，避免循环引用导致的栈溢出
+    if (cache.has(obj)) {
+        return cache.get(obj);
+    }
+
+    // 处理特殊类型Symbol
+    if (obj instanceof Symbol) {
+        return Object(Symbol.prototype.valueOf.call(obj));  // 复制Symbol
+    }
+
+    // 处理日期对象
+    if (obj instanceof Date) {
+        return new Date(obj);
+    }
+
+    // 处理正则表达式
+    if (obj instanceof RegExp) {
+        return new RegExp(obj);
+    }
+
+    // 处理数组
+    if (Array.isArray(obj)) {
+        const newArr = [];
+        cache.set(obj, newArr);
+        obj.forEach((item, index) => {
+            newArr[index] = deepCopy(item, cache);
+        });
+        return newArr;
+    }
+
+    // 处理普通对象
+    const newObj = Object.create(Object.getPrototypeOf(obj));
+    cache.set(obj, newObj);
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            newObj[key] = deepCopy2(obj[key], cache);
+        }
+    }
+
+    return newObj;
+}
+
+// 示例
+const obj1 = {
+    name: 'John',
+    age: 30,
+    friends: ['Alice', 'Bob'],
+    address: {
+        city: 'New York',
+        zip: '10001'
+    },
+    birthday: new Date(),
+    regex: /pattern/g,
+    symbol: Symbol('foo')
+};
+
+obj1.circularReference = obj1; // 添加循环引用
+
+const obj2 = deepCopy2(obj1);
+console.log(1, obj2);
