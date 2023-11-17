@@ -429,5 +429,32 @@ Promise.race([p1, p2])
 
 > 用 JavaScript 写一个函数，输入 int 型，返回整数逆序后的字符串。如：输入整型 1234，返回字符串“4321”。要求必须使用递归函数调用，不能用全局变量，输入函数必须只有一个参数传入，必须返回字符串。
 
+--- 
 
+### 55. 修改以下 print 函数，使之输出 0 到 99，或者 99 到 0
+
+> 要求：
+>
+> 1、只能修改 `setTimeout` 到 `Math.floor(Math.random() * 1000` 的代码
+>
+> 2、不能修改 `Math.floor(Math.random() * 1000`
+>
+> 3、不能使用全局变量
+>
+> ```js
+> function print(n){
+> setTimeout(() => {
+>  console.log(n);
+> }, Math.floor(Math.random() * 1000));
+> }
+> for(var i = 0; i < 100; i++){
+> print(i);
+> }
+> ```
+
+---
+
+### 56. 不用加减乘除运算符，求整数的7倍
+
+---
 

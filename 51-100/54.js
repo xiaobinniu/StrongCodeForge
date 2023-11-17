@@ -16,3 +16,15 @@ function test(num) {
 console.log(test(123456))
 
 console.log(("123456").slice(0, 2));
+
+
+function self(num) {
+    let str = num.toString()
+
+    if (str.length == 1) {
+        return str
+    }
+    return str.charAt(str.length - 1) + self(str.slice(0, str.length - 1))
+}
+
+console.log(self(123456))
