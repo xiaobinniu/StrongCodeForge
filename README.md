@@ -254,7 +254,7 @@ LazyMan('Tony').eat('lunch').eat('dinner').sleepFirst(5).sleep(10).eat('junk foo
 ---
 
 ### 32. 生成随机整数介于两数之间,包含两端
-> Math.floor(Math.random()*(max - min + 1) +min)
+> Math.floor(Math.random() * (max - min + 1)) + min
 
 ---
 

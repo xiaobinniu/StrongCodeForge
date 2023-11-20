@@ -118,12 +118,16 @@ function deepCopy2(obj, cache = new Map()) {
         return new RegExp(obj);
     }
 
+    if (typeof root === 'function') {
+        return eval('(' + root.toString() + ')');  // <= 如何复制function
+    }
+
     // 处理数组
     if (Array.isArray(obj)) {
         const newArr = [];
         cache.set(obj, newArr);
         obj.forEach((item, index) => {
-            newArr[index] = deepCopy(item, cache);
+            newArr[index] = deepCopy2(item, cache);
         });
         return newArr;
     }
