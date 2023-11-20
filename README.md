@@ -458,3 +458,35 @@ Promise.race([p1, p2])
 
 ---
 
+### 57. 编程题
+
+> url有三种情况
+>
+> ```js
+> https://www.xx.cn/api?keyword=&level1=&local_batch_id=&elective=&local_province_id=33
+> https://www.xx.cn/api?keyword=&level1=&local_batch_id=&elective=800&local_province_id=33
+> https://www.xx.cn/api?keyword=&level1=&local_batch_id=&elective=800,700&local_province_id=33
+> ```
+>
+> 匹配elective后的数字输出（写出你认为的最优解法）:
+>
+> ```js
+> [] || ['800'] || ['800','700']
+> ```
+
+---
+
+### 58. 随机数组 洗牌算法
+
+---
+
+### 60. 编程题，请写一个函数，完成以下功能
+
+> 输入
+> ``'1, 2, 3, 5, 7, 8, 10'``
+> 输出
+> ``'1~3, 5, 7~8, 10'``
+
+---
+
+

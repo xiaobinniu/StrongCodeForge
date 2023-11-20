@@ -1,4 +1,4 @@
-
+// 不用加减乘除运算符，求整数的7倍
 let num = 6;
 
 function test(mum) {
