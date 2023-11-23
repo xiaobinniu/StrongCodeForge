@@ -1,11 +1,14 @@
-// > 输入
-const str = '1, 2, 3, 5, 7, 8, 10'
-// > 输出
-// > ``'1~3, 5, 7~8, 10'``
 
-function test(params) {
-    let arr = params.split(",");
-    console.log(arr);
+class Test {
+    count = 0;
+
+    constructor() { }
+
+    setV(type, value) {
+        this[type] = value
+    }
 }
 
-test(str)
+let a = new Test()
+a.setV("count", 10)
+console.log(a);
