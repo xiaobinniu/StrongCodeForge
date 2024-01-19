@@ -7,6 +7,8 @@ class Test {
     setV(type, value) {
         this[type] = value
     }
+
+
 }
 
 let a = new Test()
